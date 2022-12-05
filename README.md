@@ -2,6 +2,7 @@
 Generates (currently black & white) images by given input or randomly
 
 Note: Images are generated as .bpm and disable image smoothening in your image viewer app becouse images can be very small
+
 For example:
 
 ![Screenshot from 2022-12-05 18-23-51](https://user-images.githubusercontent.com/62663286/205688609-18cf7819-a4f6-4dd0-9228-f0e541a65255.png)
