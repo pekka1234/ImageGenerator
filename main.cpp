@@ -1,33 +1,29 @@
 #include<iostream>
 #include<string>
-#include<cstring>
-#include<sstream>
-#include<stdio.h>
 #include<vector>
 #include<fstream>
-#include<stdlib.h>
 #include<time.h>
 using namespace std;
 
 
+// text is the string that will be written to the file, w is image width, h is image height
 string text = "P1\n";
 int w = 0;
 int h = 0;
 
 
-int random(int min, int max) //range : [min, max]
-{
+// function to get either 0 or 1 randomly
+int random(int min, int max){
    static bool first = true;
-   if (first) 
-   {  
-      srand( time(NULL) ); //seeding for the first time only!
+   if(first){  
+      srand( time(NULL) );
       first = false;
    }
    return min + rand() % (( max + 1 ) - min);
 }
 
 
-
+// function that is used when typing order and when order is randomly generated with lenght, function basically creates the image content when using orders
 void orde(vector<string> sequ){
     int c = 0;
     for(int i = 0; i < h; i++){
@@ -48,6 +44,7 @@ void orde(vector<string> sequ){
 }
 
 
+// splits string by ','
 vector<string> split(string str){
     vector<string> result;
     string temp = "";
@@ -67,10 +64,9 @@ vector<string> split(string str){
 }
 
 
-////////   to_string(x) int -> string solution
-
-
+// asks question of the image and runs functions
 int main(){
+    // black and white or color, width and height
     int prev = -1;
     string bw;
     string vs;
@@ -82,23 +78,28 @@ int main(){
     w = stoi(res[0]);
     h = stoi(res[1]);
     text += (res[0] + ' ' + res[1] + '\n');
+
     if(bw == "0"){
+        // type order ar random question
         string sor;
 	string seq;
 	cout << "Sequence of blacks and whites in orded order(0) or random(1): ";
 	cin >> sor;
+
 	if(sor == "0"){
+            // asking for order and running function with it
 	    vector<string> relseq;
             cout << "enter sequence, black = 1, white = 0 (for exmp. 1,0,0,0,1,1,0): ";
 	    cin >> seq;
 	    relseq = split(seq);
 	    orde(relseq);
-	    //cout << text << endl;
 	}else{
             char roor;
 	    cout << "Random for each pixel(0) or random order(1): ";
 	    cin >> roor;
+
 	    if(roor == '1'){
+                // creating random order and running orde function with it
 	        string len;
 		cout << "Enter order length: ";
 		cin >> len;
@@ -107,8 +108,13 @@ int main(){
 		for(int y = 0; y < rlen; y++){
                     rels.push_back(to_string(random(0,1)));		    
 		}
+		cout << "Used sequence: ";
+		for(string i: rels)
+                    cout << i << ',';
+		cout << '\n';
 		orde(rels);
 	    }else{
+                // randomizing for each pixel seperately
 	        for(int d = 0; d < h; d++){
 		    for(int f = 0; f < w; f++){
 		        text += to_string(random(0,1));
@@ -122,6 +128,7 @@ int main(){
 	    }
 	}
     }
+    // writing string to the file
     string fname;
     cout << "Enter file name: ";
     cin >> fname;
@@ -129,5 +136,6 @@ int main(){
     ofstream file(fname);
     file << text;
     file.close();
+
     return 0;
 }
