@@ -97,7 +97,7 @@ void putseq(){
     // asking for order and running function with it
     string seq;
     vector<string> relseq;
-    cout << "Enter order of blacks(1) and whites(0) the image will be filled(for exmp. 1,0,0,0,1,1,0): ";
+    cout << "Enter order of blacks(1) and whites(0) the image will be filled(for exmp. 1000110): ";
     cin >> seq;
     relseq = split(seq, false);
     if(lines(relseq.size())){
