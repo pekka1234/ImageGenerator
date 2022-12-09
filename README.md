@@ -21,12 +21,12 @@ Enter image widht and height in pixels (for exmp. 12,14): 30,30  <-- anwsered 30
 
 Sequence of blacks and whites in orded order(0) or random(1): 0  <-- anwsered 0 and pressed Enter
 
-enter sequence, black = 1, white = 0 (for exmp. 1,0,0,0,1,1,0): 1,0,0,1,0,0,0  <-- anwsered 1,0,0,1,0,0,0 and pressed Enter
+enter sequence, black = 1, white = 0 (for exmp. 1000110): 1001000  <-- anwsered 1001000 and pressed Enter
 
 Enter file name: img  <--anwsered img and pressed Enter
 
 Other things are pretty simple but the sequence is more complicated, it means that the order of black and white will be repeated trought the whole picture,
-for example image #1 sequence was 1,0,0,1,0,0,0 and it means black, white, white, black, white, white, white. You can check that that is the order image #1
+for example image #1 sequence was 1001000 and it means black, white, white, black, white, white, white. You can check that that is the order image #1
 follows from start to beginning
 
 Random:
