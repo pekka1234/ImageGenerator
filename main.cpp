@@ -6,10 +6,29 @@
 using namespace std;
 
 
+
+
+// used orde pilkku vikassa ongelma, pilkku onglelma sequenssisss eli helpompi on ei pilkkuja esim. 10001010100010101010111110 qr koodi
+
 // text is the string that will be written to the file, w is image width, h is image height
 string text = "P1\n";
 int w = 0;
 int h = 0;
+
+
+
+bool lines(int modulo){
+    if(w % modulo == 0){
+        char conf;
+        cout << "The order lenght is same as the image width (result image will be straight lines). Do you want to continue(0) or not(1): ";
+        cin >> conf;
+        if(conf == '1'){
+            return true;
+        }
+    }
+    return false;
+}
+
 
 
 // function to get either 0 or 1 randomly
@@ -44,24 +63,72 @@ void orde(vector<string> sequ){
 }
 
 
+
+
+
 // splits string by ','
-vector<string> split(string str){
+vector<string> split(string str, bool smalbig){	
     vector<string> result;
     string temp = "";
-    for(int i = 0; i < str.length(); i++){
-        if(str[i] != ',' && i != (str.length() - 1)){
-	    temp += str[i];
-	    //cout << temp << endl;
-	}else if(i == (str.length() - 1)){
-            temp += str[i];
+    if(smalbig){
+        for(int i = 0; i < str.length(); i++){
+            if(str[i] != ',' && i != (str.length() - 1)){
+	        temp += str[i];
+	    }else if(i == (str.length() - 1)){
+                temp += str[i];
+	        result.push_back(temp);
+	    }else{
+                result.push_back(temp);
+                temp = "";
+	    }
+        }
+    }else{
+        for(int ii = 0; ii < str.length(); ii++){
+            temp += str[ii];
 	    result.push_back(temp);
-	}else{
-            result.push_back(temp);
-            temp = "";
+	    temp = "";
 	}
     }
     return result;
 }
+
+
+void putseq(){
+    // asking for order and running function with it
+    string seq;
+    vector<string> relseq;
+    cout << "Enter order of blacks(1) and whites(0) the image will be filled(for exmp. 1,0,0,0,1,1,0): ";
+    cin >> seq;
+    relseq = split(seq, false);
+    if(lines(relseq.size())){
+        putseq();
+    }else{
+        orde(relseq);
+    }	
+}
+
+
+void ranord(){
+    // creating random order and running orde function with it
+    string len;
+    cout << "Enter order's length: ";
+    cin >> len;
+    int rlen = stoi(len);
+    if(lines(rlen)){
+        ranord();        
+    }else{
+        vector<string> rels;
+        for(int y = 0; y < rlen; y++){
+            rels.push_back(to_string(random(0,1)));
+        }
+        cout << "Used order: ";
+        for(string i: rels)
+            cout << i;
+        cout << '\n';
+        orde(rels);
+    }
+}
+
 
 
 // asks question of the image and runs functions
@@ -72,9 +139,9 @@ int main(){
     string vs;
     cout << "Black and white(0) or color picture(1): ";
     cin >> bw;
-    cout << "Enter image widht and height in pixels (for exmp. 12,14): ";
+    cout << "Enter image's widht and height in pixels (for exmp. 12,14): ";
     cin >> vs;
-    vector<string> res = split(vs);
+    vector<string> res = split(vs, true);
     w = stoi(res[0]);
     h = stoi(res[1]);
     text += (res[0] + ' ' + res[1] + '\n');
@@ -82,37 +149,18 @@ int main(){
     if(bw == "0"){
         // type order ar random question
         string sor;
-	string seq;
-	cout << "Sequence of blacks and whites in orded order(0) or random(1): ";
+	cout << "Blacks and whites in orded order(0) or randomly generated(1): ";
 	cin >> sor;
 
 	if(sor == "0"){
-            // asking for order and running function with it
-	    vector<string> relseq;
-            cout << "enter sequence, black = 1, white = 0 (for exmp. 1,0,0,0,1,1,0): ";
-	    cin >> seq;
-	    relseq = split(seq);
-	    orde(relseq);
+            putseq();
 	}else{
             char roor;
 	    cout << "Random for each pixel(0) or random order(1): ";
 	    cin >> roor;
 
 	    if(roor == '1'){
-                // creating random order and running orde function with it
-	        string len;
-		cout << "Enter order length: ";
-		cin >> len;
-		int rlen = stoi(len);
-                vector<string> rels;
-		for(int y = 0; y < rlen; y++){
-                    rels.push_back(to_string(random(0,1)));		    
-		}
-		cout << "Used sequence: ";
-		for(string i: rels)
-                    cout << i << ',';
-		cout << '\n';
-		orde(rels);
+                ranord();
 	    }else{
                 // randomizing for each pixel seperately
 	        for(int d = 0; d < h; d++){
@@ -130,7 +178,7 @@ int main(){
     }
     // writing string to the file
     string fname;
-    cout << "Enter file name: ";
+    cout << "Enter file's name (without extension): ";
     cin >> fname;
     fname += ".bpm";
     ofstream file(fname);
