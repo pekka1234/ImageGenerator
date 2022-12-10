@@ -8,10 +8,10 @@ using namespace std;
 
 
 
-// used orde pilkku vikassa ongelma, pilkku onglelma sequenssisss eli helpompi on ei pilkkuja esim. 10001010100010101010111110 qr koodi
+
 
 // text is the string that will be written to the file, w is image width, h is image height
-string text = "P1\n";
+string text;
 int w = 0;
 int h = 0;
 
@@ -49,16 +49,16 @@ void orde(vector<string> sequ){
         for(int x = 0; x < w; x++){
             text += sequ[c];
             if(c != (sequ.size() - 1)){
-	        c += 1;
-	    }else{
-	        c = 0;
+	            c += 1;
+            }else{
+                c = 0;
+            }
+            if(x != (w - 1)){
+                text += ' ';
+            }else if(i != (h - 1)){
+                text += '\n';
+            }
 	    }
-	    if(x != (w - 1)){
-	        text += ' ';
-	    }else if(i != (h - 1)){
-	        text += '\n';
-	    }
-	}
     }    
 }
 
@@ -73,21 +73,21 @@ vector<string> split(string str, bool smalbig){
     if(smalbig){
         for(int i = 0; i < str.length(); i++){
             if(str[i] != ',' && i != (str.length() - 1)){
-	        temp += str[i];
-	    }else if(i == (str.length() - 1)){
+	            temp += str[i];
+            }else if(i == (str.length() - 1)){
                 temp += str[i];
-	        result.push_back(temp);
-	    }else{
+                result.push_back(temp);
+            }else{
                 result.push_back(temp);
                 temp = "";
-	    }
+            }
         }
     }else{
         for(int ii = 0; ii < str.length(); ii++){
             temp += str[ii];
-	    result.push_back(temp);
-	    temp = "";
-	}
+	        result.push_back(temp);
+	        temp = "";
+	    }
     }
     return result;
 }
@@ -129,7 +129,63 @@ void ranord(){
     }
 }
 
+// manual input order for color images
+void corde(vector<string> cequ){
+    vector<string> finale;
+    string temp;
+    string tempi;
+    int ier = 0;
+    string cur;
+    int cequz = cequ.size();
+    //for (string g: cequ)
+    //    cout << g << ' ';
+    //cout << cequz << 'g';    
+    for(int u = 0; u < cequz; u++){
+        temp = {};
+        cur = cequ[u];
+        for(int y = 0; y < 9; y++){
+            if((y + 1) % 3 != 0){
+                tempi += cur[y];
+            }else{
+                tempi += cur[y];
+                temp += (to_string((stoi(tempi))) + ' ');
+                tempi = "";
+            }
+        }
+        temp.pop_back();
+        finale.push_back((temp));
+    }
+    /*
+    for(string h: finale)
+        cout << h << ' ';
+    */
+    int lenf = finale.size();
+    for(int i = 0; i < (w * h); i++){
+        if(i != (w * h - 1)){
+            text += (finale[ier] + '\n');
+        }else{
+            text += finale[ier];
+        }
+        if(ier < (lenf - 1)){
+            ier += 1;
+        }else{
+            ier = 0;
+        }
+    }
+    
+}
 
+void cutseq(){
+    string ceq;
+    cout << "Enter order of rgb values (max 255) seperated by ',' (for exmp. 012233002,111123010,255001000): ";
+    cin >> ceq;
+    vector<string> celseq = split(ceq, true);
+    if(lines(celseq.size())){
+        cutseq();
+    }else{
+        corde(celseq);
+    }
+}
 
 // asks question of the image and runs functions
 int main(){
@@ -144,37 +200,46 @@ int main(){
     vector<string> res = split(vs, true);
     w = stoi(res[0]);
     h = stoi(res[1]);
-    text += (res[0] + ' ' + res[1] + '\n');
+    text += (res[0] + ' ' + res[1]);
 
     if(bw == "0"){
-        // type order ar random question
+        text = "P1\n" + text + '\n';
+            // type order ar random question
         string sor;
-	cout << "Blacks and whites in orded order(0) or randomly generated(1): ";
-	cin >> sor;
+        cout << "Blacks and whites in orded order(0) or randomly generated(1): ";
+        cin >> sor;
 
-	if(sor == "0"){
+        if(sor == "0"){
             putseq();
-	}else{
-            char roor;
-	    cout << "Random for each pixel(0) or random order(1): ";
-	    cin >> roor;
+        }else{
+                char roor;
+            cout << "Random for each pixel(0) or random order(1): ";
+            cin >> roor;
 
-	    if(roor == '1'){
-                ranord();
-	    }else{
+            if(roor == '1'){
+                    ranord();
+            }else{
                 // randomizing for each pixel seperately
-	        for(int d = 0; d < h; d++){
-		    for(int f = 0; f < w; f++){
-		        text += to_string(random(0,1));
-			if(f != (w - 1)){
-			    text += ' ';
-			}else if(d == (h - 1)){
-			    text += '\n';
-			}
-		    }
-		}
-	    }
-	}
+                for(int d = 0; d < h; d++){
+                    for(int f = 0; f < w; f++){
+                        text += to_string(random(0,1));
+                        if(f != (w - 1)){
+                            text += ' ';
+                        }else if(d == (h - 1)){
+                            text += '\n';
+                        }
+                    }
+                }
+            }
+        }
+    }else{
+        text = "P3 " + text + " 255\n";
+        char csor;
+        cout << "Colors in orded order(0) or randomly generated(1): ";
+        cin >> csor;
+        if(csor == '0'){
+            cutseq();
+        }
     }
     // writing string to the file
     string fname;
@@ -184,6 +249,7 @@ int main(){
     ofstream file(fname);
     file << text;
     file.close();
+    cout << "File saved succesfully in current directory" << endl;
 
     return 0;
 }
