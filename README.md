@@ -1,5 +1,5 @@
 # RandomImageGenerator
-Generates (currently black & white) images by given input or randomly
+Generates images by given input or randomly
 
 Note: Images are generated as .bpm and disable image smoothening in your image viewer app becouse images can be very small
 
