@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-
+// functuionazing copied code (ranord atleast)
 
 
 // text is the string that will be written to the file, w is image width, h is image height
@@ -108,26 +108,7 @@ void putseq(){
 }
 
 
-void ranord(){
-    // creating random order and running orde function with it
-    string len;
-    cout << "Enter order's length: ";
-    cin >> len;
-    int rlen = stoi(len);
-    if(lines(rlen)){
-        ranord();        
-    }else{
-        vector<string> rels;
-        for(int y = 0; y < rlen; y++){
-            rels.push_back(to_string(random(0,1)));
-        }
-        cout << "Used order: ";
-        for(string i: rels)
-            cout << i;
-        cout << '\n';
-        orde(rels);
-    }
-}
+
 
 // manual input order for color images
 void corde(vector<string> cequ){
@@ -187,6 +168,66 @@ void cutseq(){
     }
 }
 
+void eachsep(){
+    // randomizing for each pixel seperately
+    for(int d = 0; d < h; d++){
+        for(int f = 0; f < w; f++){
+            text += to_string(random(0,1));
+            if(f != (w - 1)){
+                text += ' ';
+            }else if(d == (h - 1)){
+                text += '\n';
+            }
+        }
+    }
+}
+
+
+void rcord(bool sw){
+    // creating random order (colors) and running corde function with it
+    string len;
+    cout << "Enter order's length: ";
+    cin >> len;  
+    int rlen = stoi(len);
+    if(lines(rlen)){
+        rcord(false);        
+    }else if(sw){
+        vector<string> rels;
+        for(int y = 0; y < rlen; y++){
+            rels.push_back(to_string(random(0,1)));
+        }
+        cout << "Used order: ";
+        for(string i: rels)
+            cout << i;
+        cout << '\n';
+        orde(rels);
+    }else{
+        vector<string> cels;
+        for(int i = 0; i < rlen; i++){
+            string rs = "";
+            for(int h = 0; h < 3; h++){
+                int ran = random(0, 255);
+                string sran = "";
+                for(int g = 0; g < (3 - to_string(ran).length()); g++){
+                    sran += '0';
+                }
+                sran += to_string(ran);
+                rs += sran;
+            }
+            cels.push_back(rs);
+        }
+        corde(cels);
+    }
+}
+
+
+void cachep(){
+    for(int i = 0; i < (w * h); i++){
+        text += (to_string(random(0,255)) + ' ' + to_string(random(0,255)) + ' ' + to_string(random(0,255)) + '\n');
+    }
+    text.pop_back();
+}
+
 // asks question of the image and runs functions
 int main(){
     // black and white or color, width and height
@@ -212,24 +253,13 @@ int main(){
         if(sor == "0"){
             putseq();
         }else{
-                char roor;
+            char roor;
             cout << "Random for each pixel(0) or random order(1): ";
             cin >> roor;
-
             if(roor == '1'){
-                    ranord();
+                rcord(true);
             }else{
-                // randomizing for each pixel seperately
-                for(int d = 0; d < h; d++){
-                    for(int f = 0; f < w; f++){
-                        text += to_string(random(0,1));
-                        if(f != (w - 1)){
-                            text += ' ';
-                        }else if(d == (h - 1)){
-                            text += '\n';
-                        }
-                    }
-                }
+                eachsep();
             }
         }
     }else{
@@ -239,13 +269,22 @@ int main(){
         cin >> csor;
         if(csor == '0'){
             cutseq();
+        }else{
+            char anw;
+            cout << "Random for each pixel(0) or random order(1): ";
+            cin >> anw;
+            if(anw == '1'){
+                rcord(false);
+            }else{
+                cachep();
+            }
         }
     }
     // writing string to the file
     string fname;
     cout << "Enter file's name (without extension): ";
     cin >> fname;
-    fname += ".bpm";
+    fname += ".bmp";
     ofstream file(fname);
     file << text;
     file.close();
