@@ -11,9 +11,8 @@ Here are some example images:
 ![cc](https://user-images.githubusercontent.com/62663286/208254675-4196c62d-4c54-4edb-bb4a-06fd5b8967ab.png)
 ![Screenshot from 2022-12-17 19-49-38](https://user-images.githubusercontent.com/62663286/208254792-b40f0fe7-adfd-44e4-8b33-4dc6d49f8106.png)
 
-## How to use it?![Screenshot from 2022-12-17 19-55-19](https://user-images.githubusercontent.com/62663286/208255043-3cc7564b-bf37-4c7d-837d-370e95a4d583.png)
+## How to use it?
 
 Here is an image of the command line after an image is created:
 
-
-![Uploading Screenshot from 2022-12-17 19-55-19.png…]()
+![Screenshot from 2022-12-17 19-55-19](https://user-images.githubusercontent.com/62663286/208255073-8e22925d-1e5e-457e-a299-f32967cbbd66.png)
