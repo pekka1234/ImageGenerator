@@ -6,8 +6,20 @@
 using namespace std;
 
 
+/*
+Useful information:
+Code starts running from the main function, which in this program asks all the questions needed for the image
+generation and runs the right functions (and the functions itslef run other functions). Each functions main task
+is told just before it starts at a comment. This program generates both black & white and color images, but both
+operations use the same functions, but with diferent arguments so the function knows what to do. If you want to
+undesstand the code, you should also understand the bitmap image file format, although it is said to be the simplest
+file format (thats why it is used in this program). But is is important to remember that black & white and color
+images use the same file format but diferent versions, black and white P1 and color images P3. This program is also
+has the GPL v3 license.
+*/
 
-// functuionazing copied code (ranord atleast) TEXT:POPBACKAUSmuuallaki kuin eachepissä JAORDER PATTERNS ELI ESIM. paljon musttaa ja valkoista peräkkäin
+// random notes:
+// functuionazing copied code (ranord atleast) TEXT:POPBACKAUSmuuallaki kuin eachepissä JAORDER PATTERNS ELI ESIM. paljon musttaa ja valkoista peräkkäin ja paperi ohjeet paperille yöajatus
 
 
 // text is the string that will be written to the file, w is image width, h is image height
@@ -16,9 +28,10 @@ int w = 0;
 int h = 0;
 
 
-
+// function that checks if image widht is divisible by order lenght (if so, the image will be line in a bar code style)
 bool lines(int modulo){
     if(w % modulo == 0){
+        // informing program user about it adn asking if the user wants to continue and returting either true ofŕ false based on that
         char conf;
         cout << "The order lenght is same as the image width (result image will be straight lines). Do you want to continue(0) or not(1): ";
         cin >> conf;
@@ -31,84 +44,103 @@ bool lines(int modulo){
 
 
 
-// function to get either 0 or 1 randomly
+// function to get random value between min and max (black & white uses it to generate random value between 0 and 1. color images use it to range between 0 and 255 (rgb)
 int random(int min, int max){
+   // uses variable first and srand and time to generate random values
    static bool first = true;
    if(first){  
-      srand( time(NULL) );
+      srand(time(NULL));
       first = false;
    }
-   return min + rand() % (( max + 1 ) - min);
+   return min + rand() % ((max + 1) - min);
 }
 
 
-// function that is used when typing order and when order is randomly generated with lenght, function basically creates the image content when using orders
-void orde(vector<string> sequ, bool swwi){
+// function that is used when typing order and when order is randomly generated with lenght, function basically creates the image content when using orders and it is the most important function in this program since 90% of tge time orders are used when running this script adn this is the final most important step in the .bmp file content creation. and it is important to note that if you want to understand this function, you will need to also understand the bitmap image file format.
+void orde(vector<string> order, bool bwc){
+    // int c is just used to count that which point of the order are we going
     int c = 0;
-    if(swwi){
+    // bwc true (for black & white images)
+    if(bwc){
+        // for loops goes trough height and width
         for(int i = 0; i < h; i++){
             for(int x = 0; x < w; x++){
-                text += sequ[c];
-                if(c != (sequ.size() - 1)){
+                // adds right object order to the text (file content)
+                text += order[c];
+                // checks if all of order has been added, then it will start again
+                if(c != (order.size() - 1)){
                     c += 1;
                 }else{
                     c = 0;
                 }
+                // adds spacebars and newlines when needed to the text (file content)
                 if(x != (w - 1)){
                     text += ' ';
-                }else if(i != (h - 1)){
+                }else{
                     text += '\n';
                 }
             }
-        }    
+        }
+        // above code always add newline to end of one pixel line of the image, but the last one is useless because after that no new pixel line comes (could also cause trouble to the bitmap file reader) so ot removes last char of the str
+        text.pop_back();    
+    // bwc false (for color images)
     }else{
+        // note: code down below is probaly most complicated code in this whole program so it may not be easy to understand how it works especially if you don's knoiw how bitmap color images work
+        // finale is list that has the strings that the file should be filled. current is the current object of the order that is processed. orderlen is the lenght of the order
+        // temp contains single chars of one rgb value string and bigtemp is the string that temps get added to and at the end bigtemp conatsins one color in rgb values adn it is pushed to finale
         vector<string> finale;
+        string bigtemp;
         string temp;
-        string tempi;
-        string cur;
-        int sequz = sequ.size();
-
-        for(int u = 0; u < sequz; u++){
-            temp = {};
-            cur = sequ[u];
+        string current;
+        int orderlen = order.size();
+        // code down below takes the order and removes leading zeroes from it and makes one rgb color in to a single string that is pushed to finale
+        // note: for loop down below is done because bitmap color image file format will not take leafing zeroes in front of numbers
+        for(int u = 0; u < orderlen; u++){
+            bigtemp = {};
+            current = order[u];
             for(int y = 0; y < 9; y++){
+                // divisibility by three is used becouse one rgb value is three digits long (if leading zeors are counted)
                 if((y + 1) % 3 != 0){
-                    tempi += cur[y];
+                    // if not divisible by three, temp gets added another char of the current string from the order
+                    temp += current[y];
                 }else{
-                    tempi += cur[y];
-                    temp += (to_string((stoi(tempi))) + ' ');
-                    tempi = "";
+                    // if it is divisible by three, that means that ine rgb value of the current color is complete in temp, so it gets added to bigtemp (and alose space bar to seperate the values)
+                    temp += current[y];
+                    bigtemp += (to_string((stoi(temp))) + ' ');
+                    // temp is set so noting becouse it will be a new rgb value soon
+                    temp = "";
                 }
             }
-            temp.pop_back();
-            finale.push_back((temp));
+            // after bigtemp is complete, the last spacebar will be removed becouse it is not needed beocuse no value comes after it
+            bigtemp.pop_back();
+            // now the one color is added to finale in bitmap readable format
+            finale.push_back((bigtemp));
         }
-
+        // code down below adds finales objects to the text (file content variable)
         int lenf = finale.size();
+        // for loop will be done widht * height times because that is how many pixels will be in the image
+        // int c is used to know the number of the object/element of finale that is added to text (global variable that contains the file content)
         for(int i = 0; i < (w * h); i++){
-            if(i != (w * h - 1)){
-                text += (finale[c] + '\n');
-            }else{
-                text += finale[c];
-            }
+            text += (finale[c] + '\n');
             if(c < (lenf - 1)){
                 c += 1;
             }else{
                 c = 0;
             }
         }
+        // last char of text will be removed becouse it is a newline that is not needed
+        text.pop_back();
     }
 }
 
-
-
-
-
-// splits string by ','
-vector<string> split(string str, bool smalbig){	
+// splits string to vector<strings>
+vector<string> split(string str, bool notcom){	
+    // result is the final result that will be returned, temp is one object of result that will be push_backed to it (temp is set to a new value many times)
     vector<string> result;
     string temp = "";
-    if(smalbig){
+    // notcom means that is the seperator nothing or comma (comma for color images, nothing black & white)
+    if(notcom){
+        // for loop goes trough the string and if it detects a comma, it adds the current temp to result, if not, then it adds the char to temp
         for(int i = 0; i < str.length(); i++){
             if(str[i] != ',' && i != (str.length() - 1)){
 	            temp += str[i];
@@ -121,37 +153,44 @@ vector<string> split(string str, bool smalbig){
             }
         }
     }else{
-        for(int ii = 0; ii < str.length(); ii++){
-            temp += str[ii];
+        // for black & white images it just goes trought the string and adds every char to the vector<string>
+        for(int i = 0; i < str.length(); i++){
+            temp += str[i];
 	        result.push_back(temp);
 	        temp = "";
 	    }
     }
+
     return result;
 }
 
-
-void putseq(bool swi){
-    // asking for order and running function with it
-    string seq;
-    vector<string> relseq;
-    if(swi){
+// asking to manually type order and sending it to orde
+void putseq(bool bwc){
+    string strmanord;
+    vector<string> vecmanord;
+    // if bwc (black & white or color is true (meaning black & white)) then code down below will run
+    if(bwc){
+        // asking for the order
         cout << "Enter order of blacks(1) and whites(0) the image will be filled(for exmp. 1000110): ";
-        cin >> seq;
-        relseq = split(seq, false);
-        if(lines(relseq.size())){
+        cin >> strmanord;
+        // splitting strmanord string and setting vecmanord equal to it
+        vecmanord = split(strmanord, false);
+        // checking if order lenght is divisible by image widht witl lines function (if it is the image will be just lines in a bar code style) and if so, then this function will just run again, otherwise vecmanord will be sent to orde
+        if(lines(vecmanord.size())){
             putseq(true);
         }else{
-            orde(relseq, true);
+            orde(vecmanord, true);
         } 
+    // bwc false, so color image operation is done instead of black & white
     }else{
+        // doing the same thing as above but just with diferent question and diferent arguments (those arguments say that this is about color image) to the functions that will be run
         cout << "Enter order of rgb values (max 255) seperated by ',' (for exmp. 012233002,111123010,255001000): ";
-        cin >> seq;
-        relseq = split(seq, true);
-        if(lines(relseq.size())){
+        cin >> strmanord;
+        vecmanord = split(strmanord, true);
+        if(lines(vecmanord.size())){
             putseq(false);
         }else{
-            orde(relseq, false);
+            orde(vecmanord, false);
         }
     }
 }
@@ -178,102 +217,117 @@ void eachsep(bool swt){
     text.pop_back();
 }
 
-// tells order what was used generating the image (when random order is thing is used)
+// tells order what was used generating the image (when random order by lenght is used)
 void usedorder(vector<string> ord, char del){
+    // black & white images use delimeter '\0' (nothing) and color images use ' ' (space bar)
     cout << "Used order: ";
     for(string i: ord)
         cout << i << del;
     cout << '\n';
 }
 
-void rcord(bool sw){
-    // creating random order and running orde function with it
+// creates a random order and send it to orde (function)
+void ranord(bool bwc){
+    // asking for the order's length
     string len;
     cout << "Enter order's length: ";
     cin >> len;  
-    int rlen = stoi(len);
-    if(lines(rlen)){
-        rcord(sw);        
-    }else if(sw){
-        vector<string> rels;
-        for(int y = 0; y < rlen; y++){
-            rels.push_back(to_string(random(0,1)));
+    int intlen = stoi(len);
+    vector<string> order;
+    // checking if order's length is divisible by image width trough lines function (the image will be basically just lines in a bar code style if the length is divisible by the width)
+    if(lines(intlen)){
+        // if so, this function will just run again
+        ranord(bwc);   
+    // if bwc is true it means that black & white option will be used        
+    }else if(bwc){
+        // putting randomly either "0" or "1" to order list until it's length is reached
+        for(int y = 0; y < intlen; y++){
+            order.push_back(to_string(random(0,1)));
         }
-        usedorder(rels, '\0');
-        orde(rels, true);
+        usedorder(order, '\0');
+        // sending randomly generated order to orde with true argument meaning black & white mode
+        orde(order, true);
+    // bwc false means color image
     }else{
-        vector<string> cels;
-        for(int i = 0; i < rlen; i++){
-            string rs = "";
+        // filling order list but now it is filled with random strings like 100020255 and so on (that is rgb color code Note: leading zeroes are to number smaller than 100)
+        for(int i = 0; i < intlen; i++){
+            string onestr = "";
             for(int h = 0; h < 3; h++){
                 int ran = random(0, 255);
-                string sran = "";
+                string onerbg = "";
+                // adding leading zeros
                 for(int g = 0; g < (3 - to_string(ran).length()); g++){
-                    sran += '0';
+                    onerbg += '0';
                 }
-                sran += to_string(ran);
-                rs += sran;
+                onerbg += to_string(ran);
+                // adding one rgb value (line 200 or 100 or 255 or 001 or 020...) to onestr
+                onestr += onerbg;
             }
-            cels.push_back(rs);
+            // pushing onestr (onestr is a strig like 255255000 or 010200100 so it is one color in rgb values so it is part of the color order)
+            order.push_back(onestr);
         }
-        usedorder(cels, ' ');
-        orde(cels, false);
+        usedorder(order, ' ');
+        // sending randomly generated order to orde with false meaning color mode
+        orde(order, false);
     }
 }
 
 // asks question of the image and runs functions
 int main(){
-    // black and white or color, width and height
-    int prev = -1;
-    string bw;
-    string vs;
+    // asking for black & white or color image and for width and height
+    string bwc;
+    string wh;
+    char ordran;
+    char eachord;
     cout << "Black and white(0) or color picture(1): ";
-    cin >> bw;
+    cin >> bwc;
     cout << "Enter image's widht and height in pixels (for exmp. 12,14): ";
-    cin >> vs;
-    vector<string> res = split(vs, true);
+    cin >> wh;
+    vector<string> res = split(wh, true);
     w = stoi(res[0]);
     h = stoi(res[1]);
     text += (res[0] + ' ' + res[1]);
-
-    if(bw == "0"){
+    // if black & white is selected
+    if(bwc == "0"){
+        // adding black & white file signature and widht & height information
         text = "P1\n" + text + '\n';
-            // type order ar random question
-        string sor;
+        // asking for manually typed black & white order or randomly generated image
         cout << "Blacks and whites in orded order(0) or randomly generated(1): ";
-        cin >> sor;
-
-        if(sor == "0"){
+        cin >> ordran;
+        // if manually typed order is selected, putseq will run, otherwise randomly generated will run in else{}
+        if(ordran == '0'){
             putseq(true);
         }else{
-            char roor;
+            // manually typed order is not selected (randomly generated is selected) so asking for each pixel seperately randomized or randomized order
             cout << "Random for each pixel(0) or random order(1): ";
-            cin >> roor;
-            if(roor == '1'){
-                rcord(true);
+            cin >> eachord;
+            // if random order is selected, ranord will be run, otherwise eachsep
+            if(eachord == '1'){
+                ranord(true);
             }else{
                 eachsep(true);
             }
         }
     }else{
+        // adding color images file signature and width & height information and maximum rgb value
         text = "P3 " + text + " 255\n";
-        char csor;
         cout << "Colors in orded order(0) or randomly generated(1): ";
-        cin >> csor;
-        if(csor == '0'){
+        cin >> ordran;
+        // if order is selected putseq will run, otherwise randomly generated will eun in else{}
+        if(ordran == '0'){
             putseq(false);
         }else{
-            char anw;
             cout << "Random for each pixel(0) or random order(1): ";
-            cin >> anw;
-            if(anw == '1'){
-                rcord(false);
+            cin >> eachord;
+            // if random order is selected, ranord will be run, otherwise eachsep
+            if(eachord == '1'){
+                ranord(false);
             }else{
                 eachsep(false);
             }
         }
     }
-    // writing string to the file
+    // asking for file name and writing & saving the file
     string fname;
     cout << "Enter file's name (without extension): ";
     cin >> fname;
