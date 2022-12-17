@@ -1,8 +1,8 @@
 #include<iostream>
 #include<string>
-#include<vector>
-#include<fstream>
-#include<time.h>
+#include<vector> // used everywhere where lists are needed
+#include<fstream> // used in main() to create file
+#include<time.h> // used in random()
 using namespace std;
 
 
@@ -19,7 +19,7 @@ has the GPL v3 license.
 */
 
 // random notes:
-// functuionazing copied code (ranord atleast) TEXT:POPBACKAUSmuuallaki kuin eachepissä JAORDER PATTERNS ELI ESIM. paljon musttaa ja valkoista peräkkäin ja paperi ohjeet paperille yöajatus
+// functuionazing copied code (ranord atleast) TEXT:POPBACKAUSmuuallaki kuin eachepissä JAORDER PATTERNS ELI ESIM. paljon musttaa ja valkoista peräkkäin ja paperi ohjeet paperille yöajatusa and patterns in orders niinkuin enmemmän samoja värejä peräkköin
 
 
 // text is the string that will be written to the file, w is image width, h is image height
@@ -195,13 +195,16 @@ void putseq(bool bwc){
     }
 }
 
-
-void eachsep(bool swt){
-    // randomizing for each pixel seperately
-    if(swt){
+// randomizing black / white or color for each pixel seperately
+void eachsep(bool bwc){
+    // if bwc is true (meaning black & white image), code down below will run
+    if(bwc){
+        // for loop goes trough height and inside that for loop goes trough width 
         for(int d = 0; d < h; d++){
             for(int f = 0; f < w; f++){
+                // randomizing if 0 (white) or 1 (black) is selected to the pixel
                 text += to_string(random(0,1));
+                // adding spaces and newlines to seperate pixels and pixel rows
                 if(f != (w - 1)){
                     text += ' ';
                 }else{
@@ -209,11 +212,15 @@ void eachsep(bool swt){
                 }
             }
         }
+    // for colors images code down below is run
     }else{
+        // for loop goes trough width * height becouse it is the amount of pixels in the image
         for(int i = 0; i < (w * h); i++){
+            // three random rgb values are added to the text (global variable for file content)
             text += (to_string(random(0,255)) + ' ' + to_string(random(0,255)) + ' ' + to_string(random(0,255)) + '\n');
         }
     }
+    // removing last char becouse it is newline that is not needed
     text.pop_back();
 }
 
