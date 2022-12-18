@@ -16,3 +16,7 @@ Here are some example images:
 Here is an image of the command line after an image is created:
 
 ![Screenshot from 2022-12-17 19-55-19](https://user-images.githubusercontent.com/62663286/208255073-8e22925d-1e5e-457e-a299-f32967cbbd66.png)
+
+Here is the above image creation process in steps:
+
+1. Selecting if image will be black & white (0) or color image (1). In image creation above, black & white (0) was selected.
