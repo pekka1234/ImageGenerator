@@ -42,3 +42,7 @@ In this program (when black & white images are used), orders mean sequences of b
 ![Screenshot from 2022-12-18 10-49-04](https://user-images.githubusercontent.com/62663286/208289288-fb5b5f0a-8c74-4328-b713-f969d3a7781a.png)
 
 In above image you can see that the pixels (starting from up left) are black,white,white,black,white,white... and so on just like the order was (black,white,white) so the orders are just sequences of blacks and white that will fill the image. Orders are inserted to the program in a way that black = 1 and white = 0 so the above image was created using order 100.
+
+Here is the termianl after the above image was created:
+
+![Screenshot from 2022-12-18 10-57-32](https://user-images.githubusercontent.com/62663286/208289594-1bc3373b-a847-47cf-bd86-7a587e29b78e.png)
