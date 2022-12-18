@@ -4,7 +4,7 @@
 
 Random Image Generator is a command line tool written in C++ to create bitmap images randomly or by input. 
 
-Note: When you view images generated with this program, turn image smoothening off when zooming so you cans see the pixels.
+Note: When you view images generated with this program, turn image smoothening off when zooming so you can see the pixels.
 
 Here are some example images that are generated using this program:
 
