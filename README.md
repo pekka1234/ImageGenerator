@@ -19,4 +19,8 @@ Here is an image of the command line after an image is created:
 
 Here is the above image creation process in steps:
 
+Note: When values are put in the terminal, no spaces are allowed
+
 1. Selecting if image will be black & white (0) or color image (1). In image creation above, black & white (0) was selected.
+
+2. Inserting image' width and height in pixels. In image creation above, 500 was selected to be the width and height.
