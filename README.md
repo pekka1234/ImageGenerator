@@ -186,6 +186,10 @@ As you can see, it wars the user about the divisibility and asks if the user wan
 
 Images used in this readme are really small and simple, but with this program you can also create massive images like for example 40000x40000 pixels so the only limit is your image viewer software's capabilities.
 
+### Bitmap file format
+
+Bitmap files tend to take a lot of space but that's not a problem because you can easily convert bitmap files to png files (and other file formats of course)
+
 ### Contributing
 
 Feel free to make a pull request :)
