@@ -48,3 +48,10 @@ In above image you can see that the pixels (starting from up left) are black,whi
 Here is the termianl after the above image was created:
 
 ![Screenshot from 2022-12-18 10-57-32](https://user-images.githubusercontent.com/62663286/208289594-1bc3373b-a847-47cf-bd86-7a587e29b78e.png)
+
+In the first terminal picture example (where the image creation steps were also explained), the image was 500x500 pixels and had the order 1010100000000000111111111010101. 
+
+Here is the result:
+
+![exmaple_image](https://user-images.githubusercontent.com/62663286/208290124-8b117e7a-984c-4b90-98dc-8ccbfdd49031.png)
+
