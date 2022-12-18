@@ -49,7 +49,7 @@ In this program (when black & white images are used), orders mean sequences of b
 
 In above image you can see that the pixels (starting from up left) are black,white,white,black,white,white... and so on just like the order was (black,white,white) so the orders are just sequences of blacks and white that will fill the image. Orders are inserted to the program in a way that black = 1 and white = 0 so the above image was created using order 100.
 
-Here is the termianl after the above image was created:
+Here is the terminal after the above image was created:
 
 Note: pictures from the terminal in this readme are from the first version of this program so the word choises of the questions might have sligtly changed.
 
@@ -74,12 +74,11 @@ Note: The thing that causes those fun pixel structures in the images is the fact
 
 ### Creating color images by a manually typed order
 
-Here is an image of the termianl after a color image is created:
+Here is an image of the terminal after a color image is created:
 
 ![Screenshot from 2022-12-18 11-29-00](https://user-images.githubusercontent.com/62663286/208290897-5565749e-7c8a-457b-9e3e-e67219af468e.png)
 
 Here is the above image's creation process in steps:
-
 
 1. Selecting if image will be black & white (0) or color image (1). In image creation above, color (1) was selected.
 
@@ -103,7 +102,7 @@ Note: the one colors rgb values have always three digits in this program, so for
 
 ### How to create image randomly (both black & white and color work the same way)?
 
-Here is a picture of a terminal after an image is created randomly (using randomization for each pixel seperately):
+Here is a picture of the terminal after an image is created randomly (using randomization for each pixel seperately):
 
 ![Screenshot from 2022-12-18 11-54-55](https://user-images.githubusercontent.com/62663286/208291862-410f8e58-10aa-43f3-b942-b1cdf9616fba.png)
 
