@@ -181,3 +181,7 @@ Here is the terminal picture:
 ![Screenshot from 2022-12-18 12-33-40](https://user-images.githubusercontent.com/62663286/208293521-4fa275c7-5595-4cae-9c7c-804ae15338df.png)
 
 As you can see, it wars the user about the divisibility and asks if the user wanst to continue (0) or not (1). If not continuing (1) is selected, it asks to type the order lenght again and if it warns when the user manually typed the order, it asks to manually type it again.
+
+### Image sizes
+
+Images used in this readme are really small and simple, but with this program you can also create massive images like for example 40000x40000 pixels so the only limit is your image viewer software's capabilities.
