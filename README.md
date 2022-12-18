@@ -55,3 +55,13 @@ Here is the result:
 
 ![exmaple_image](https://user-images.githubusercontent.com/62663286/208290124-8b117e7a-984c-4b90-98dc-8ccbfdd49031.png)
 
+The image is quite large (500x500 pixels) so you can't see the pixel structure, but if you zoom in you can see it better:
+
+![Screenshot from 2022-12-18 11-13-57](https://user-images.githubusercontent.com/62663286/208290214-a980ac3e-bb1c-4e0f-a37b-a47589c2f5c0.png)
+
+The pixel structure is in most cases quite interesting and is the fun thing about this program adn if we zoom to the top left of this image, we can see
+that the pixel order is being followed:
+
+![Screenshot from 2022-12-18 11-16-29](https://user-images.githubusercontent.com/62663286/208290349-532ed5a3-18a6-4650-88f0-88112853d5b2.png)
+
+Note: The thing that causes those fun pixel structures in the images is the fact that the order's lenght doesn't go evenly to the images width, whcih means that the order will begin from diferent part of the order when looking ti the left side of the image, as seen in the above image.
