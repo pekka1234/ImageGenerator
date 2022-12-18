@@ -15,7 +15,7 @@ Note: some images are screenshots of the actual images because they are so small
 
 ## How to use it?
 
-### Creating images by manually typed order
+### Creating black & white images by a manually typed order
 
 Here is an image of the command line after an image is created:
 
