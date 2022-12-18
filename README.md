@@ -115,7 +115,7 @@ Here is the above image's creation process in steps:
 
 3. Deciding if image is created by manual typed order or randomly. In image creation above randomly (1) was selected.
 
-4. Deciding if randomization for each pixel seperately or random order is used. In image creation above, random for each pixel was selected.
+4. Deciding if randomization for each pixel seperately (0) or random order (1) is used. In image creation above, random for each pixel (0) was selected.
 
 #### How random for each pixel seperately works
 
@@ -147,7 +147,7 @@ Here is the above image's creation process in steps:
 
 3. Deciding if image is created by manual typed order or randomly. In image creation above randomly (1) was selected.
 
-4. Deciding if randomization for each pixel seperately is used or random order. In image creation above, random order(1) was selected.
+4. Deciding if randomization for each pixel (0) seperately is used or random order (1). In image creation above, random order (1) was selected.
 
 5. Entering order's lenght. In image creation above, 15 was used
 
