@@ -190,6 +190,10 @@ Images used in this readme are really small and simple, but with this program yo
 
 Bitmap files tend to take a lot of space but that's not a problem because you can easily convert bitmap files to png files (and other file formats of course)
 
+### Originality
+
+There are many random pixel image generators out there (which this program was suppose to be) but none or very few (haven't found any) have the opportunity to create images by color order, which is the greates and most fun thing in this program.
+
 ### Contributing
 
 Feel free to make a pull request :)
