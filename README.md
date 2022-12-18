@@ -159,6 +159,8 @@ For black & white, after the length is given, the program creates a random order
 
 For color images the process is same, but instead of zeroes and ones, it randomizes color like 100000213.
 
-Here is the generated image from above terminal picture:
+After the order is generated, the program says the used order, for example in the terminal picture above: "Used order: 111011011101001".
+
+Here is the generated image from above terminal picture (you can see that the used order is used in that image):
 
 ![Screenshot from 2022-12-18 12-22-52](https://user-images.githubusercontent.com/62663286/208293082-1aec15e7-59d0-489a-b7d9-b1356da0cde2.png)
