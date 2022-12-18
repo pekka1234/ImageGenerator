@@ -17,7 +17,7 @@ Note: some images are screenshots of the actual images because they are so small
 
 ## How to use it?
 
-Note: When black & white images are explained, there will be given some extra general info too, because color image explanation just include how they are diferent from the black & white images, so read black & white explanations first.
+Note: When black & white images are explained, there will be given some extra general info too, because color image explanation just includes how they are diferent from the black & white images, so read black & white explanations first.
 
 ### Creating black & white images by a manually typed order
 
