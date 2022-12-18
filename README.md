@@ -185,3 +185,7 @@ As you can see, it wars the user about the divisibility and asks if the user wan
 ### Image sizes
 
 Images used in this readme are really small and simple, but with this program you can also create massive images like for example 40000x40000 pixels so the only limit is your image viewer software's capabilities.
+
+### Contributing
+
+Feel free to make a pull request :)
