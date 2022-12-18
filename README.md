@@ -17,6 +17,8 @@ Note: some images are screenshots of the actual images because they are so small
 
 ## How to use it?
 
+Note: When black & white images are explained, there will be given some extra general info too, because color image explanation just include how they are diferent from the black & white images, so read black & white explanations first.
+
 ### Creating black & white images by a manually typed order
 
 Here is an image of the terminal after an black & white image is created:
@@ -48,6 +50,8 @@ In this program (when black & white images are used), orders mean sequences of b
 In above image you can see that the pixels (starting from up left) are black,white,white,black,white,white... and so on just like the order was (black,white,white) so the orders are just sequences of blacks and white that will fill the image. Orders are inserted to the program in a way that black = 1 and white = 0 so the above image was created using order 100.
 
 Here is the termianl after the above image was created:
+
+Note: pictures from the terminal in this readme are from the first version of this program so the word choises of the questions might have sligtly changed.
 
 ![Screenshot from 2022-12-18 10-57-32](https://user-images.githubusercontent.com/62663286/208289594-1bc3373b-a847-47cf-bd86-7a587e29b78e.png)
 
@@ -94,3 +98,35 @@ First of all, color image's order is a sequence of colors in rgb values, that ar
 Here is the result image:
 
 ![Screenshot from 2022-12-18 11-45-17](https://user-images.githubusercontent.com/62663286/208291556-2755822a-bc88-4bcc-9afa-904ea421ce8c.png)
+
+Note: the one colors rgb values have always three digits in this program, so for example: 255 = 255, 1 = 001, 35 = 035, 20 = 020... and so on.
+
+### How to create image randomly (both black & white and color work the same way)?
+
+Here is a picture of a terminal after an image is created randomly:
+
+![Screenshot from 2022-12-18 11-54-55](https://user-images.githubusercontent.com/62663286/208291862-410f8e58-10aa-43f3-b942-b1cdf9616fba.png)
+
+Here is the above image's creation process in steps:
+
+1. Selecting if image will be black & white (0) or color image (1). In image creation above, black & white (0) was selected.
+
+2. Inserting image' width and height in pixels. In image creation above, 50 was selected to be the width and height.
+
+3. Deciding if image is created by manual typed order or randomly. In image creation above randomly (1) was selected.
+
+4. Deciding if randomization for each pixel seperately or random order is used. In image creation above, random for each pixel was selected.
+
+#### How random for each pixel seperately works
+
+Note: Random for each pixel images look all very similiar and the random order is much more fun.
+
+It black & white it basically randomly decides for every pixel that will it be black and white.
+
+In color images it decided random color for each pixel.
+
+Here is the generated image from the above terminal picture:
+
+![Screenshot from 2022-12-18 12-04-59](https://user-images.githubusercontent.com/62663286/208292267-b5073023-ea77-4421-880e-72d8a32268ac.png)
+
+Note: The above image is a screenshot of the actual image (and most of the images you have seen in this readme are also screenshots) because the actual images are so small and because of it beeing a screenshot, you can see a grey pixel in down right corner because it is a bug of my image viewer.
