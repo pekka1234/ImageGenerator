@@ -17,7 +17,7 @@ Note: some images are screenshots of the actual images because they are so small
 
 ### Creating black & white images by a manually typed order
 
-Here is an image of the command line after an image is created:
+Here is an image of the terminal after an black & white image is created:
 
 ![Screenshot from 2022-12-17 19-55-19](https://user-images.githubusercontent.com/62663286/208255073-8e22925d-1e5e-457e-a299-f32967cbbd66.png)
 
@@ -65,3 +65,9 @@ that the pixel order is being followed:
 ![Screenshot from 2022-12-18 11-16-29](https://user-images.githubusercontent.com/62663286/208290349-532ed5a3-18a6-4650-88f0-88112853d5b2.png)
 
 Note: The thing that causes those fun pixel structures in the images is the fact that the order's lenght doesn't go evenly to the images width, whcih means that the order will begin from diferent part of the order when looking ti the left side of the image, as seen in the above image.
+
+### Creating color images by a manually typed order
+
+Here is an image of the termianl after a color image is created:
+
+![Screenshot from 2022-12-18 11-29-00](https://user-images.githubusercontent.com/62663286/208290897-5565749e-7c8a-457b-9e3e-e67219af468e.png)
