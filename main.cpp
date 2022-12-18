@@ -288,7 +288,7 @@ int main(){
     char eachord;
     cout << "Black and white(0) or color picture(1): ";
     cin >> bwc;
-    cout << "Enter image's widht and height in pixels (for exmp. 12,14): ";
+    cout << "Enter image's width and height in pixels (for exmp. 12,14): ";
     cin >> wh;
     vector<string> res = split(wh, true);
     w = stoi(res[0]);
