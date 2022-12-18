@@ -103,7 +103,7 @@ Note: the one colors rgb values have always three digits in this program, so for
 
 ### How to create image randomly (both black & white and color work the same way)?
 
-Here is a picture of a terminal after an image is created randomly:
+Here is a picture of a terminal after an image is created randomly (using randomization for each pixel seperately):
 
 ![Screenshot from 2022-12-18 11-54-55](https://user-images.githubusercontent.com/62663286/208291862-410f8e58-10aa-43f3-b942-b1cdf9616fba.png)
 
@@ -130,3 +130,35 @@ Here is the generated image from the above terminal picture:
 ![Screenshot from 2022-12-18 12-04-59](https://user-images.githubusercontent.com/62663286/208292267-b5073023-ea77-4421-880e-72d8a32268ac.png)
 
 Note: The above image is a screenshot of the actual image (and most of the images you have seen in this readme are also screenshots) because the actual images are so small and because of it beeing a screenshot, you can see a grey pixel in down right corner because it is a bug of my image viewer.
+
+Note: There is a color image of each pixel randomized seperately in the start of this readme.
+
+#### How random order works:
+
+Here is a picture of a terminal after image is created with a random order:
+
+![Screenshot from 2022-12-18 11-54-55](https://user-images.githubusercontent.com/62663286/208292543-1f7e2671-1670-46aa-95bf-15c0e2e5caab.png)
+
+Here is the above image's creation process in steps:
+
+1. Selecting if image will be black & white (0) or color image (1). In image creation above, black & white (0) was selected.
+
+2. Inserting image' width and height in pixels. In image creation above, 100 was selected to be the width and height.
+
+3. Deciding if image is created by manual typed order or randomly. In image creation above randomly (1) was selected.
+
+4. Deciding if randomization for each pixel seperately is used or random order. In image creation above, random order(1) was selected.
+
+5. Entering order's lenght. In image creation above, 15 was used
+
+6. Entering file's name
+
+#### How random order works?
+
+For black & white, after the length is given, the program creates a random order that is the given length's amount of pixels long.
+
+For color images the process is same, but instead of zeroes and ones, it randomizes color like 100000213.
+
+Here is the generated image from above terminal picture:
+
+![Screenshot from 2022-12-18 12-22-52](https://user-images.githubusercontent.com/62663286/208293082-1aec15e7-59d0-489a-b7d9-b1356da0cde2.png)
