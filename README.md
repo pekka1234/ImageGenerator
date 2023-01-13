@@ -192,7 +192,7 @@ Bitmap files tend to take a lot of space but that's not a problem because you ca
 
 ### Originality
 
-There are many random pixel image generators out there (which this program was suppose to be) but none or very few (haven't found any) have the opportunity to create images by color order, which is the greates and most fun thing in this program.
+There are many random pixel image generators out there but none or very few (haven't found any) have the opportunity to create images by color (or black & white) order, which is the greatest and most fun thing in this program.
 
 ### Contributing
 
