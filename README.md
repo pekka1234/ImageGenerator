@@ -188,7 +188,7 @@ Images used in this readme are really small and simple, but with this program yo
 
 ### Bitmap file format
 
-Bitmap files tend to take a lot of space but that's not a problem because you can easily convert bitmap files to png files (and other file formats of course)
+Bitmap files tend to take a lot of space and not every image viewer supports bitmap file type but that's not a problem because you can easily convert bitmap files to png files (and other file formats of course)
 
 ### Originality
 
