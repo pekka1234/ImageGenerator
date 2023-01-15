@@ -1,8 +1,8 @@
 #include<iostream>
 #include<string>
-#include<vector> // used everywhere where lists are needed
-#include<fstream> // used in main() to create file
-#include<time.h> // used in random()
+#include<vector>
+#include<fstream>
+#include<time.h>
 using namespace std;
 
 
@@ -17,9 +17,6 @@ file format (thats why it is used in this program). But is is important to remem
 images use the same file format but diferent versions, black and white P1 and color images P3. This program is also
 has the GPL v3 license.
 */
-
-// random notes:
-// functuionazing copied code (ranord atleast) TEXT:POPBACKAUSmuuallaki kuin eachepissä JAORDER PATTERNS ELI ESIM. paljon musttaa ja valkoista peräkkäin ja paperi ohjeet paperille yöajatusa and patterns in orders niinkuin enmemmän samoja värejä peräkköin
 
 
 // text is the string that will be written to the file, w is image width, h is image height
@@ -84,8 +81,7 @@ void orde(vector<string> order, bool bwc){
         // above code always add newline to end of one pixel line of the image, but the last one is useless because after that no new pixel line comes (could also cause trouble to the bitmap file reader) so ot removes last char of the str
         text.pop_back();    
     // bwc false (for color images)
-    }else{
-        // note: code down below is probaly most complicated code in this whole program so it may not be easy to understand how it works especially if you don's knoiw how bitmap color images work
+    }else{ 
         // finale is list that has the strings that the file should be filled. current is the current object of the order that is processed. orderlen is the lenght of the order
         // temp contains single chars of one rgb value string and bigtemp is the string that temps get added to and at the end bigtemp conatsins one color in rgb values adn it is pushed to finale
         vector<string> finale;
@@ -94,7 +90,7 @@ void orde(vector<string> order, bool bwc){
         string current;
         int orderlen = order.size();
         // code down below takes the order and removes leading zeroes from it and makes one rgb color in to a single string that is pushed to finale
-        // note: for loop down below is done because bitmap color image file format will not take leafing zeroes in front of numbers
+        // note: for loop down below is done because bitmap color image file format will not take leading zeroes in front of numbers
         for(int u = 0; u < orderlen; u++){
             bigtemp = {};
             current = order[u];
