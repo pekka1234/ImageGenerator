@@ -1,8 +1,8 @@
-#include<iostream>
-#include<string>
-#include<vector>
-#include<fstream>
-#include<time.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <time.h>
 using namespace std;
 
 
@@ -40,7 +40,7 @@ int random(int min, int max){
 }
 
 
-// function that is used when typing order and when order is randomly generated with lenght, function basically creates the image content when using orders and it is the most important function in this program since 90% of tge time orders are used when running this script adn this is the final most important step in the .bmp file content creation. and it is important to note that if you want to understand this function, you will need to also understand the bitmap image file format.
+// function that is used when typing order and when order is randomly generated with lenght, function basically creates the image content when using orders
 void orde(vector<string> order, bool bwc){
     // int c is just used to count that which point of the order are we going
     int c = 0;
@@ -77,7 +77,6 @@ void orde(vector<string> order, bool bwc){
         string current;
         int orderlen = order.size();
         // code down below takes the order and removes leading zeroes from it and makes one rgb color in to a single string that is pushed to finale
-        // note: for loop down below is done because bitmap color image file format will not take leading zeroes in front of numbers
         for(int u = 0; u < orderlen; u++){
             bigtemp = {};
             current = order[u];
@@ -303,7 +302,7 @@ int main(){
         text = "P3 " + text + " 255\n";
         cout << "Colors in orded order(0) or randomly generated(1): ";
         cin >> ordran;
-        // if order is selected putseq will run, otherwise randomly generated will eun in else{}
+        // if order is selected putseq will run, otherwise randomly generated will run in else{}
         if(ordran == '0'){
             putseq(false);
         }else{
