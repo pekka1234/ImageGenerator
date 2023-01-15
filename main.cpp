@@ -6,19 +6,6 @@
 using namespace std;
 
 
-/*
-Useful information:
-Code starts running from the main function, which in this program asks all the questions needed for the image
-generation and runs the right functions (and the functions itslef run other functions). Each functions main task
-is told just before it starts at a comment. This program generates both black & white and color images, but both
-operations use the same functions, but with diferent arguments so the function knows what to do. If you want to
-undesstand the code, you should also understand the bitmap image file format, although it is said to be the simplest
-file format (thats why it is used in this program). But is is important to remember that black & white and color
-images use the same file format but diferent versions, black and white P1 and color images P3. This program is also
-has the GPL v3 license.
-*/
-
-
 // text is the string that will be written to the file, w is image width, h is image height
 string text;
 int w = 0;
