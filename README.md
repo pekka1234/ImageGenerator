@@ -138,7 +138,7 @@ Note: There is a color image of each pixel randomized seperately in the start of
 
 Here is a picture of a terminal after image is created with a random order:
 
-![Screenshot from 2022-12-18 11-54-55](https://user-images.githubusercontent.com/62663286/208292543-1f7e2671-1670-46aa-95bf-15c0e2e5caab.png)
+![Screenshot from 2022-12-18 12-13-11](https://user-images.githubusercontent.com/62663286/212705067-7f05702a-7390-4177-a5fc-81d02e7eb509.png)
 
 Here is the above image's creation process in steps:
 
