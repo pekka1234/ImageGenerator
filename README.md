@@ -102,7 +102,9 @@ Note: the one color's rgb values have always three digits in this program, so fo
 
 ### How to create image randomly (both black & white and color work the same way)?
 
-Here is a picture of the terminal after an image is created randomly (using randomization for each pixel seperately):
+#### How to create images using random for each pixel?
+
+Here is a picture of the terminal after an image is created randomly using randomization for each pixel seperately:
 
 ![Screenshot from 2022-12-18 11-54-55](https://user-images.githubusercontent.com/62663286/208291862-410f8e58-10aa-43f3-b942-b1cdf9616fba.png)
 
@@ -116,7 +118,7 @@ Here is the above image's creation process in steps:
 
 4. Deciding if randomization for each pixel seperately (0) or random order (1) is used. In image creation above, random for each pixel (0) was selected.
 
-#### How random for each pixel seperately works
+#### How random for each pixel seperately works?
 
 Note: Random for each pixel images look all very similiar and the random order is much more fun.
 
@@ -132,7 +134,7 @@ Note: The above image is a screenshot of the actual image (and most of the image
 
 Note: There is a color image of each pixel randomized seperately in the start of this readme.
 
-#### How random order works:
+#### How to create images with random order:
 
 Here is a picture of a terminal after image is created with a random order:
 
