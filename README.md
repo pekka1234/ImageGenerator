@@ -102,7 +102,7 @@ Note: the one color's rgb values have always three digits in this program, so fo
 
 ### How to create image randomly (both black & white and color work the same way)?
 
-#### How to create images using random for each pixel?
+#### How to create images using random for each pixel seperately?
 
 Here is a picture of the terminal after an image is created randomly using randomization for each pixel seperately:
 
