@@ -27,7 +27,7 @@ Here is an image of the terminal after an black & white image is created:
 
 Here is the above image's creation process in steps:
 
-Note: When values are put in the terminal, **no spaces are allowed**
+Note: When values are put in the terminal, 	`rgb(R,G,B)` no spaces are allowed 	`rgb(255,0,0)`
 
 1. Selecting if image will be black & white (0) or color image (1). In image creation above, black & white (0) was selected.
 
